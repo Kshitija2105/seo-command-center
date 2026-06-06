@@ -1,0 +1,8 @@
+{"event": "SessionStart", "ts": "2026-06-06T10:00:00Z"}
+{"event": "UserPromptSubmit", "ts": "2026-06-06T10:01:00Z", "prompt": "Read CLAUDE.md and run audit"}
+{"event": "PreToolUse", "ts": "2026-06-06T10:01:05Z", "tool": "Read", "path": "CLAUDE.md"}
+{"event": "PostToolUse", "ts": "2026-06-06T10:01:06Z", "tool": "Read", "result": "ok"}
+{"event": "PreToolUse", "ts": "2026-06-06T10:01:10Z", "tool": "Bash", "command": "python3 run.py sample-export --no-dashboard"}
+{"event": "PostToolUse", "ts": "2026-06-06T10:01:45Z", "tool": "Bash", "result": "456 rows, 12 issue types"}
+{"event": "SubagentStop", "ts": "2026-06-06T10:10:00Z", "agent": "ValidateFixFiles", "tool_uses": 6, "result": "All valid"}
+{"event": "Stop", "ts": "2026-06-06T10:20:00Z", "summary": "Audit complete"}
