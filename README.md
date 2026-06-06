@@ -53,6 +53,8 @@ and redirect chains.
 - Python · Shell · HTML · JavaScript
 
 ## Repo Structure
+
+```
 seo-command-center/
 ├── .claude-plugin/plugin.json     plugin manifest
 ├── .claude/                       audit hooks + settings
@@ -65,6 +67,7 @@ seo-command-center/
 ├── scripts/                       export-transcript + utilities
 ├── run.py                         headless runner (auto-tester entry point)
 └── outputs/                       generated reports
+```
 ## Memory Files
 
 | File | Purpose |
