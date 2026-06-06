@@ -35,7 +35,7 @@ tr:last-child td{border-bottom:none}
   <div class="stats">
     <div class="stat"><div class="num">456</div><div class="label">URLs Crawled</div></div>
     <div class="stat"><div class="num high">2</div><div class="label">High Severity</div></div>
-    <div class="stat"><div class="num medium">5</div><div class="label">Medium Severity</div></div>
+    <div class="stat"><div class="num medium">6</div><div class="label">Medium Severity</div></div>
     <div class="stat"><div class="num low">5</div><div class="label">Low Severity</div></div>
   </div>
   <div class="card">
@@ -43,41 +43,46 @@ tr:last-child td{border-bottom:none}
     <div class="recs"><ul><li>Fix the 12 High-severity 'duplicate_title' issue(s) first.</li><li>Fix the 6 High-severity 'broken_link' issue(s) first.</li><li>Fix the 63 Medium-severity 'title_too_long' issue(s) first.</li><li>Fix the 16 Medium-severity 'duplicate_meta' issue(s) first.</li><li>Fix the 333 Medium-severity 'missing_h1' issue(s) first.</li></ul></div>
   </div>
   <div class="card">
-    <h2>Issues Found (12 total)</h2>
+    <h2>Issues Found (13 total)</h2>
     <table><thead><tr><th>Severity</th><th>Issue</th><th>Count</th><th>Affected URLs</th></tr></thead>
     <tbody><tr>
             <td><span style="background:#ff4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">High</span></td>
-            <td><strong>Duplicate Title</strong><br><small>Pages sharing identical title.</small></td>
+            <td><strong>Duplicate Title</strong><br><small>Pages sharing an identical title.</small></td>
             <td style="text-align:center"><strong>12</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/<br>https://nmgtechnologies.com/clients/case-studies/<br>https://nmgtechnologies.com/industry/fintech<br><em>...and 9 more</em></td>
         </tr><tr>
             <td><span style="background:#ff4444;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">High</span></td>
-            <td><strong>Broken Link</strong><br><small>4xx errors.</small></td>
+            <td><strong>Broken Link</strong><br><small>URLs returning 4xx errors.</small></td>
             <td style="text-align:center"><strong>6</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/hs-fs/hubfs/B-W_icon.png.png?width=101&height=100&name=B-W_icon.png.png<br>https://nmgtechnologies.com/hs-fs/hubfs/edtech.png.png?width=101&height=100&name=edtech.png.png<br>https://nmgtechnologies.com/hs-fs/hubfs/fintech.png.png?width=101&height=100&name=fintech.png.png<br><em>...and 3 more</em></td>
         </tr><tr>
             <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
-            <td><strong>Title Too Long</strong><br><small>Titles too long.</small></td>
+            <td><strong>Title Too Long</strong><br><small>Titles likely truncated in search results.</small></td>
             <td style="text-align:center"><strong>63</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/<br>https://nmgtechnologies.com/agentic-ai<br>https://nmgtechnologies.com/ai-driven-enterprise-software-development<br><em>...and 60 more</em></td>
         </tr><tr>
             <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
-            <td><strong>Duplicate Meta</strong><br><small>Pages sharing identical meta.</small></td>
+            <td><strong>Duplicate Meta</strong><br><small>Pages sharing an identical meta description.</small></td>
             <td style="text-align:center"><strong>16</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/blog<br>https://nmgtechnologies.com/blog/author/nishtha<br>https://nmgtechnologies.com/clients/case-studies/<br><em>...and 13 more</em></td>
         </tr><tr>
             <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
-            <td><strong>Missing H1</strong><br><small>Pages with no H1.</small></td>
+            <td><strong>Missing H1</strong><br><small>Pages with no H1 tag.</small></td>
             <td style="text-align:center"><strong>333</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/_hcms/forms/v2.js<br>https://nmgtechnologies.com/company/process/<br>https://nmgtechnologies.com/contact-us<br><em>...and 330 more</em></td>
         </tr><tr>
             <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
-            <td><strong>Redirect</strong><br><small>3xx redirects.</small></td>
+            <td><strong>Redirect</strong><br><small>URLs that redirect.</small></td>
             <td style="text-align:center"><strong>7</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/company/about-us/<br>https://nmgtechnologies.com/compound-banc<br>https://nmgtechnologies.com/services/mobile-application-development/<br><em>...and 4 more</em></td>
         </tr><tr>
             <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
-            <td><strong>Non Indexable But Linked</strong><br><small>Non-indexable but linked.</small></td>
+            <td><strong>Missing Alt Text</strong><br><small>Images missing alt text.</small></td>
+            <td style="text-align:center"><strong>279</strong></td>
+            <td style="font-size:11px;color:#666">https://nmgtechnologies.com/hs-fs/hubfs/Dedicated%20Team%20Setup.png?width=1400&height=1400&name=Dedicated%20Team%20Setup.png<br>https://nmgtechnologies.com/hs-fs/hubfs/Imported_Blog_Media/1-1-1-1.jpg?width=640&height=272&name=1-1-1-1.jpg<br>https://nmgtechnologies.com/hs-fs/hubfs/Imported_Blog_Media/2-1-1-1.jpg?width=640&height=566&name=2-1-1-1.jpg<br><em>...and 276 more</em></td>
+        </tr><tr>
+            <td><span style="background:#ffaa00;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Medium</span></td>
+            <td><strong>Non Indexable But Linked</strong><br><small>Non-indexable pages receiving internal links.</small></td>
             <td style="text-align:center"><strong>10</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/company/about-us/<br>https://nmgtechnologies.com/compound-banc<br>https://nmgtechnologies.com/get-custom-pricing?utm_source=blog<br><em>...and 7 more</em></td>
         </tr><tr>
@@ -87,22 +92,22 @@ tr:last-child td{border-bottom:none}
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/blog<br>https://nmgtechnologies.com/blog/author/nishtha<br>https://nmgtechnologies.com/blog/tag/design<br><em>...and 18 more</em></td>
         </tr><tr>
             <td><span style="background:#44bb44;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Low</span></td>
-            <td><strong>Meta Too Long</strong><br><small>Meta too long.</small></td>
+            <td><strong>Meta Too Long</strong><br><small>Meta descriptions over 155 characters.</small></td>
             <td style="text-align:center"><strong>42</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/<br>https://nmgtechnologies.com/agentic-ai<br>https://nmgtechnologies.com/ai-driven-business-transformation-consulting<br><em>...and 39 more</em></td>
         </tr><tr>
             <td><span style="background:#44bb44;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Low</span></td>
-            <td><strong>Duplicate H1</strong><br><small>Pages sharing identical H1.</small></td>
+            <td><strong>Duplicate H1</strong><br><small>Pages sharing an identical H1.</small></td>
             <td style="text-align:center"><strong>19</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/blog<br>https://nmgtechnologies.com/blog/author/nishtha<br>https://nmgtechnologies.com/blog/tag/design<br><em>...and 16 more</em></td>
         </tr><tr>
             <td><span style="background:#44bb44;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Low</span></td>
-            <td><strong>Thin Content</strong><br><small>Under 200 words.</small></td>
+            <td><strong>Thin Content</strong><br><small>Pages with fewer than 200 words.</small></td>
             <td style="text-align:center"><strong>10</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/blog/tag/events/page/2<br>https://nmgtechnologies.com/blog/tag/marketing<br>https://nmgtechnologies.com/blog/tag/mobile<br><em>...and 7 more</em></td>
         </tr><tr>
             <td><span style="background:#44bb44;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px">Low</span></td>
-            <td><strong>Slow Page</strong><br><small>Over 1s response.</small></td>
+            <td><strong>Slow Page</strong><br><small>Pages taking over 1 second to respond.</small></td>
             <td style="text-align:center"><strong>143</strong></td>
             <td style="font-size:11px;color:#666">https://nmgtechnologies.com/blog/best-practices-offshore-software-development<br>https://nmgtechnologies.com/blog/nmg-technologies-made-list-top-mobile-app-development-companies-goodfirms<br>https://nmgtechnologies.com/blog/tag/events/page/2<br><em>...and 140 more</em></td>
         </tr></tbody></table>
