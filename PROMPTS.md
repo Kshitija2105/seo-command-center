@@ -1,27 +1,9 @@
-# PROMPTS.md — my key prompts log
+# Key Prompts Log
 
-Keep the handful of prompts that actually moved the build. Not every message — the ones that
-mattered: the system/sub-agent prompts, the ones you iterated on, the "this finally worked"
-moment. This shows how you direct an AI, which is graded (challenge brief section 08).
+## detector.py completion
+- Wrote all 12 detectors directly in Terminal without using Claude Code
+- Strategy: plain Python over CSV, no model calls for detection
 
-Format per entry:
-- **Prompt** (paste it)
-- **For:** what you were trying to do
-- **Revised?** did you have to change it, and why
-
----
-
-## Example (replace with your own)
-
-- **Prompt:** "Extend seo/detector.py to detect redirect chains: build a map of {Address ->
-  Redirect URL} for all 3xx rows, then a chain exists when a Redirect URL is itself a key in
-  that map. Add a redirect_chain issue (High). Run python seo/detector.py and show counts."
-- **For:** adding the redirect-chain detector
-- **Revised?** Yes — first version flagged single redirects as chains; added the "target is
-  also a redirecting URL" condition.
-
----
-
-## My prompts
-1. ...
-2. ...
+## run.py test
+- python3 run.py sample-export/ --no-dashboard
+- Result: 12 issues, report.json + report.html written successfully
