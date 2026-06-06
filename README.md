@@ -1,66 +1,76 @@
-# SEO Command Center — Forge Sprint 01 starter
+# SEO Command Center
 
-A Claude Code **plugin** that ingests a **Screaming Frog SEO export**, audits it against
-the rulebook, prioritizes the issues, writes fixes, and renders a **live dashboard** plus
-an exportable client report. The plumbing works out of the box — you implement the SEO
-logic and push accuracy on the hidden export.
+A Claude Code agent pipeline that ingests a Screaming Frog SEO export, runs a 
+12-rule audit, generates prioritised fixes, and delivers a client-ready report 
+in HTML, PDF, and PPTX — all orchestrated through a live dashboard.
 
-## Quick start (headless, proves it runs)
+Built for nmg.labs Forge Sprint 01 · June 2026.
+
+## Quick Start
+
 ```bash
-pip install mcp          # exposes MCP tools to Claude Code (dashboard works without it too)
+pip install mcp
 python run.py sample-export/
-# open the live cockpit:
-#   http://localhost:7700
-# outputs land in outputs/report.json and outputs/report.html
+# Dashboard live at http://localhost:7700
+# Outputs land in outputs/report.json, report.html, report.pdf, report.pptx
 ```
 
-## Inside Claude Code
-```
-/seo-audit sample-export/
-```
+## Architecture
 
-## What's here
-```
+A central SKILL (`skills/seo-audit/SKILL.md`) coordinates four sub-agents:
+
+- **Ingest agent** — parses the Screaming Frog CSV export into structured JSON
+- **Auditor agent** — runs 12 deterministic SEO checks against the rulebook
+- **Fixer agent** — generates title rewrites and a 301 redirect map for champion-tier fixes
+- **Reporter agent** — renders the live dashboard and exports all three report formats
+
+Ollama web search is used during the audit phase to validate live page status 
+and redirect chains.
+
+## Issue Types Detected
+
+| Severity | Issue |
+|----------|-------|
+| High | Duplicate Title, Broken Link |
+| Medium | Title Too Long, Duplicate Meta, Missing H1, Redirect, Missing Alt Text, Non-Indexable But Linked |
+| Low | Title Too Short, Meta Too Long, Duplicate H1, Thin Content, Slow Page |
+
+## Outputs
+
+| File | Description |
+|------|-------------|
+| `outputs/report.json` | Raw audit results |
+| `outputs/report.html` | Styled client-ready HTML report |
+| `outputs/report.pdf` | Print-ready PDF |
+| `outputs/report.pptx` | Executive summary slide deck |
+| `outputs/fixes/title_rewrites.csv` | Suggested title fixes |
+| `outputs/fixes/redirect_map.csv` | 301 redirect map |
+
+## Stack
+
+- Claude Code + Ollama (`gemma4:31b-cloud` / `qwen3.5:9b` local)
+- `OLLAMA_CONTEXT_LENGTH=65536`
+- Python · Shell · HTML · JavaScript
+
+## Repo Structure
 seo-command-center/
-├── .claude-plugin/plugin.json   plugin manifest (skill + command + agents + MCP)
-├── .claude/                     audit hooks (settings.json + hooks/audit.sh) → records your process
-├── skills/seo-audit/SKILL.md    orchestrator
-├── agents/                      ingest, auditor, fixer, reporter (sub-agents)
-├── commands/seo-audit.md        the /seo-audit command
-├── mcp/server.py                local MCP server + live dashboard host (localhost:7700)
-├── seo/detector.py              deterministic issue detection  ← EXTEND THIS to the full rulebook
-├── dashboard/                   index.html + app.js (the cockpit)
-├── scripts/export-transcript.sh saves your session transcript to agent-log.md (commit it)
-├── run.py                       headless runner (the grader's entry point)
-└── outputs/                     report.json + report.html (generated)
-```
+├── .claude-plugin/plugin.json     plugin manifest
+├── .claude/                       audit hooks + settings
+├── skills/seo-audit/SKILL.md      master orchestrator
+├── agents/                        ingest, auditor, fixer, reporter
+├── commands/seo-audit.md          the /seo-audit command
+├── seo/detector.py                12-rule issue detector
+├── mcp/server.py                  MCP server + dashboard host
+├── dashboard/                     live cockpit (localhost:7700)
+├── scripts/                       export-transcript + utilities
+├── run.py                         headless runner (auto-tester entry point)
+└── outputs/                       generated reports
+## Memory Files
 
-## Your job in the Sprint
-1. **Complete `seo/detector.py`** to cover the full `rulebook.md` (the starter only does a
-   few issue types). Accuracy on the hidden export is the biggest part of your score.
-2. **Implement the fixer** (titles/meta rewrites within limits + a redirect map) for the
-   champion tier — see `agents/fixer.md`.
-3. **Improve the dashboard / report** to be genuinely client-ready.
-4. **Commit incrementally** (≥10 commits) and let the audit hooks record your process.
-
-## Process + memory files you must maintain (graded — see challenge brief section 08)
-These are how the judges assess *how you worked with the AI*, not just the result:
-- `.claude/audit.jsonl` — auto-written by the hooks (every tool call). Commit it. Keep
-  `.claude/settings.json` in place so the hooks keep recording.
-- `agent-log.md` — run `bash scripts/export-transcript.sh` at the end to export your session
-  transcript. Commit it.
-- `CLAUDE.md` — your project memory / instructions for the agent. **Edit this as you build** —
-  good context engineering is the clearest signal of good practice.
-- `PROMPTS.md` — log your key prompts (the ones that moved the build).
-- `DECISIONS.md` — log your real decisions and what you learned / fixed.
-
-The three records (audit log, transcript, git history) must agree — that is how a real process
-is told apart from a fabricated one. Do not edit or fake the logs.
-
-## The model
-Run on the free local stack (Claude Code + Ollama). Set `OLLAMA_CONTEXT_LENGTH=65536`,
-use a tool-trained model (`qwen3.5:9b` or `gemma4:31b-cloud`), not `qwen2.5-coder`.
-
-## Note
-The dashboard renders the operator's own crawl data on localhost; it is a local cockpit,
-not a hardened public server. The shareable artifact is the exported `report.html`.
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | Project memory and agent instructions |
+| `PROMPTS.md` | Key prompts used during the build |
+| `DECISIONS.md` | Build decisions and fixes log |
+| `agent-log.md` | Exported Claude Code session transcript |
+| `.claude/audit.jsonl` | Auto-written tool call log |
