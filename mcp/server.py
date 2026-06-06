@@ -219,3 +219,20 @@ if __name__ == "__main__":
     start_dashboard()
     print(f"[seo] dashboard live at http://localhost:{PORT}", flush=True)
     _run_mcp()
+
+# Override seo_export to use rich template
+import importlib.util as _ilu, os as _os
+def seo_export():
+    _os.makedirs(OUT_DIR, exist_ok=True)
+    import json as _json
+    obj = _report_obj()
+    with open(_os.path.join(OUT_DIR,"report.json"),"w") as f:
+        _json.dump(obj,f,indent=2)
+    try:
+        from report_template import render_html
+        html = render_html(obj)
+    except Exception:
+        html = f"<html><body><pre>{_json.dumps(obj,indent=2)}</pre></body></html>"
+    with open(_os.path.join(OUT_DIR,"report.html"),"w") as f:
+        f.write(html)
+    _emit("exported",{"files":["report.json","report.html"]})
